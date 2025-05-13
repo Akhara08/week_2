@@ -1,0 +1,22 @@
+1.What is a Vector Database?
+
+A vector database is a specialized type of database designed to store, index, and search high-dimensional vectors efficiently. These vectors typically represent data like images, audio, video, text embeddings, or any content transformed into numerical arrays using machine learning models. Unlike traditional databases that perform exact matching or relational queries, vector databases support similarity search using distance metrics such as cosine similarity, Euclidean distance, or dot product. This makes them ideal for tasks like semantic search, recommendation systems, and nearest neighbor retrieval.
+
+Modern machine learning models, particularly those in natural language processing (NLP) and computer vision, often output embeddings — fixed-length numerical representations of data. These embeddings can be stored in a vector database, enabling fast and accurate search by content meaning rather than exact keyword match. For instance, when a user searches a phrase, the phrase is converted to an embedding and compared against stored vectors to retrieve semantically similar results.
+
+Popular vector databases include Pinecone, Weaviate, FAISS (by Facebook), Milvus, and Qdrant. These systems are optimized for high performance at scale, offering features like approximate nearest neighbor (ANN) algorithms, horizontal scaling, real-time updates, and integration with AI pipelines. Many also support hybrid queries, combining keyword and vector search.
+
+Vector databases are crucial in Retrieval-Augmented Generation (RAG) systems, chatbots, and AI search applications. They allow AI models to access relevant data snippets from large unstructured datasets, improving the quality and relevance of responses. As AI applications grow, vector databases play an increasingly central role in enabling context-aware and intelligent interactions.
+
+
+
+2.What is Agentic RAG?
+
+Agentic Retrieval-Augmented Generation (Agentic RAG) is an advanced AI framework that enhances the traditional RAG approach by introducing autonomous agents capable of reasoning, planning, and interacting dynamically with data sources. In traditional RAG systems, a model retrieves relevant information from a knowledge base (often using a vector database) and uses it to generate responses. Agentic RAG takes this further by assigning proactive roles to AI agents that can determine what information they need, perform iterative retrievals, and refine their generation based on feedback or evolving goals.
+
+In Agentic RAG, agents behave more like autonomous workers. They can decompose complex user queries into subtasks, retrieve different types of contextual information, and synthesize a more accurate and coherent response. These agents often maintain memory, adapt to changing user inputs, and collaborate with other agents or tools. This autonomy leads to more intelligent and task-specific outputs, especially in domains requiring deep reasoning, such as legal analysis, scientific research, or multi-step decision-making.
+
+An important aspect of Agentic RAG is the orchestration framework that manages how agents operate, communicate, and share resources. This may involve tools like LangChain, AutoGPT, or other agentic frameworks that integrate language models with external APIs, databases, and user interfaces. Agentic RAG benefits from real-time data access, tool use (e.g., calculators or code interpreters), and the ability to self-correct or re-query information sources as needed.
+
+The growing use of Agentic RAG reflects a shift toward more interactive, self-directed AI systems. It bridges the gap between static model outputs and dynamic, goal-driven AI behavior. As the technology matures, Agentic RAG is expected to power sophisticated applications like research assistants, autonomous customer support agents, and real-time strategy planners, making AI more adaptable and capable in real-world scenarios.
+
