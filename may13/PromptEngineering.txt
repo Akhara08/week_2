@@ -1,0 +1,11 @@
+Prompt engineering is the process of crafting effective inputs (prompts) to guide the behavior and output of large language models (LLMs) like ChatGPT or Gemini. Since these models generate responses based on the input they receive, the quality and structure of the prompt play a crucial role in determining the quality of the output. Prompt engineering involves formulating instructions, context, and examples in a way that aligns the model’s responses with the user's intentions.
+
+A well-engineered prompt can help the model perform specific tasks such as summarization, translation, question answering, and creative writing. For example, asking "Explain photosynthesis to a 10-year-old" yields a very different result than "Provide a detailed explanation of photosynthesis suitable for a college textbook." Prompt engineering often includes specifying the tone, length, format, or style of the desired response.
+
+The technique is especially important in zero-shot or few-shot learning, where the model is expected to perform a task without or with minimal examples. Few-shot prompting involves giving examples within the prompt to guide the model on how to respond. Chain-of-thought prompting is another method, where the model is asked to reason step-by-step before arriving at a conclusion.
+
+Effective prompt engineering reduces ambiguity and increases reliability in outputs. It also helps to mitigate hallucinations by grounding the prompt with clear information. In advanced use cases, prompts are chained together to manage multi-step workflows. This is often used in applications like chatbots, code assistants, and data processing pipelines.
+
+Prompt engineering also includes experimenting with phrasing, structure, and even special tokens to fine-tune the response. Tools and techniques like prompt templates, instruction tuning, and reinforcement learning from human feedback (RLHF) are built on prompt engineering principles. As LLMs become more capable, prompt engineering is emerging as an essential skill for developers, researchers, and content creators.
+
+In short, prompt engineering bridges the gap between human intent and machine output, transforming raw model power into meaningful and usable responses.
