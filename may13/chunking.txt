@@ -1,0 +1,13 @@
+Chunking is the process of breaking down large volumes of text or data into smaller, manageable segments, often called “chunks.” In the context of natural language processing (NLP) and working with large language models (LLMs), chunking is especially important due to limitations in context windows—the amount of text a model can process at one time.
+
+When a document exceeds the model’s token limit, it must be split into chunks before being processed. Each chunk typically contains a limited number of tokens, which may correspond to a few hundred words depending on the language and formatting. The goal of chunking is to maintain coherence within each chunk while ensuring no important information is lost.
+
+Chunking is crucial for tasks like summarization, question answering, and document analysis. It ensures that each segment fed into the model is self-contained and intelligible. A well-chunked document improves both the accuracy and relevance of the model’s response.
+
+There are different strategies for chunking, such as fixed-size splitting, sentence-based chunking, or semantic chunking using embeddings. Fixed-size chunking splits based on character or token count, while sentence-based methods ensure grammatical completeness. Semantic chunking uses natural breaks in the content, like paragraphs or topic shifts, to enhance contextual flow.
+
+Chunking is also helpful in vector-based search systems like ChromaDB or FAISS, where each chunk is embedded and indexed for similarity search. In retrieval-augmented generation (RAG) systems, chunking enables effective retrieval of relevant information from large datasets.
+
+Proper chunking prevents model errors caused by abrupt or incomplete context. It allows long documents to be processed piece by piece while preserving meaning. Additionally, overlapping chunks can help mitigate the loss of context between segments. This overlap ensures that critical transitions or references aren’t missed.
+
+In summary, chunking is a foundational step in preparing large text data for LLMs, enhancing performance, interpretability, and scalability in real-world applications.
