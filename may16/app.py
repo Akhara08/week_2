@@ -1,70 +1,49 @@
-import autogen
-from dotenv import load_dotenv
+import google.generativeai as genai
 import os
+import re
+from dotenv import load_dotenv
 
-load_dotenv()  # Load environment variables from .env file
+# Load environment variables from .env
+load_dotenv()
+api_key = os.getenv("GOOGLE_API_KEY")
 
-config_list = [
-    {
-        'model': 'gpt-4o-mini',
-        'api_key': os.getenv('OPENAI_API_KEY')  # Load API key from .env
-    }
-]
+# Check if API key is available
+if not api_key:
+    raise ValueError("API key not found in .env file.")
 
-llm_config = {
-    "seed": 42,
-    "config_list": config_list,
-    "temperature": 0
-}
+# Configure Gemini
+genai.configure(api_key=api_key)
 
-def main():
-    assistant = autogen.AssistantAgent(
-        name="CTO",
-        llm_config=llm_config,
-        system_message="Chief technical officer of a tech company"
-    )
+# Use Gemini Flash model
+model = genai.GenerativeModel(model_name="gemini-1.5-flash")
 
-    user_proxy = autogen.UserProxyAgent(
-        name="user_proxy",
-        human_input_mode="NEVER",
-        max_consecutive_auto_reply=10,
-        is_termination_msg=lambda x: x.get("content", "").rstrip().endswith("TERMINATE"),
-        code_execution_config={"work_dir": "web", "use_docker": False},
-        llm_config=llm_config,
-        system_message="""Reply TERMINATE if the task has been solved at full satisfaction.
-Otherwise, reply CONTINUE, or the reason why the task is not solved yet."""
-    )
+# Define output file name
+filename = "output.py"
 
-    # Task 1: Write code for 1 to 100
-    task1 = (
-        "Write a Python script named 'numbers.py' that outputs numbers from 1 to 100 "
-        "to a file 'output.txt', with 10 numbers per line separated by spaces."
-    )
-    print("Sending Task 1...")
-    user_proxy.initiate_chat(assistant, message=task1)
+# Step 1: Generate code to print numbers from 1 to 100
+prompt1 = "Write only Python code (no explanation) to print numbers from 1 to 100."
+response1 = model.generate_content(prompt1)
+code1 = re.sub(r"```(?:python)?\n?|\n?```", "", response1.text).strip()
 
-    # Wait for termination on Task 1
-    while True:
-        response = user_proxy.step(assistant)
-        print("Assistant:", response["content"])
-        if user_proxy.is_termination_msg(response):
-            break
+# Save the generated code to output.py
+with open(filename, "w") as file:
+    file.write(code1)
 
-    # Task 2: Modify code to output 1 to 200 instead
-    task2 = (
-        "Modify the 'numbers.py' script you created so it outputs numbers from 1 to 200 "
-        "to the same 'output.txt', keeping the same formatting (10 numbers per line)."
-    )
-    print("Sending Task 2...")
-    user_proxy.initiate_chat(assistant, message=task2)
+print("\n✅ File created with numbers 1 to 100:\n")
+print(code1)
 
-    # Wait for termination on Task 2
-    while True:
-        response = user_proxy.step(assistant)
-        print("Assistant:", response["content"])
-        if user_proxy.is_termination_msg(response):
-            break
+# Step 2: Modify the code to print numbers from 1 to 200
+prompt2 = f"""Modify this Python code to print numbers from 1 to 200. 
+Return only the updated code without any explanation:
 
+{code1}
+"""
+response2 = model.generate_content(prompt2)
+code2 = re.sub(r"```(?:python)?\n?|\n?```", "", response2.text).strip()
 
-if __name__ == "__main__":
-    main()
+# Overwrite the file with the updated code
+with open(filename, "w") as file:
+    file.write(code2)
+
+print("\n✅ File updated with numbers 1 to 200:\n")
+print(code2)
