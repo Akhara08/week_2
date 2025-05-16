@@ -1,0 +1,43 @@
+Comparative Note: Single-Agent RAG vs. Multi-Agent RAG
+
+1. Definition:
+
+Single-Agent RAG (Retrieval-Augmented Generation): A single agent performs both the retrieval of relevant information and the generation of responses using a unified model.
+
+Multi-Agent RAG: Multiple specialized agents collaboratively perform the retrieval and generation tasks, often with each agent handling a specific sub-task or domain.
+
+2. Architecture:
+
+Single-Agent: Utilizes a single pipeline for querying, retrieving, and generating text.
+
+Multi-Agent: Involves distributed architecture where agents may interact with each other or a coordinator to complete the RAG process.
+
+3. Flexibility and Modularity:
+
+Single-Agent: Less flexible; hard to customize or adapt to different domains without retraining.
+
+Multi-Agent: Highly modular and adaptable; individual agents can be fine-tuned or replaced independently.
+
+4. Scalability:
+
+Single-Agent: May struggle with scaling across large or diverse datasets.
+
+Multi-Agent: Better scalability through parallel processing and specialized agents.
+
+5. Performance and Efficiency:
+
+Single-Agent: Generally faster due to fewer inter-agent communications.
+
+Multi-Agent: Potentially more accurate or context-aware but can introduce latency due to coordination overhead.
+
+6. Use Cases:
+
+Single-Agent: Suitable for simpler, well-defined tasks where unified processing is sufficient.
+
+Multi-Agent: Ideal for complex tasks requiring domain expertise, coordination, or multi-step reasoning.
+
+7. Maintenance:
+
+Single-Agent: Easier to maintain as only one model/pipeline is involved.
+
+Multi-Agent: More complex to maintain but offers better fault isolation and targeted improvements.
